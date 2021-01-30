@@ -3,3 +3,8 @@ ion-toolbar {
     --color: white;
     padding-left: 5%;
 }
+
+ion-header,
+ion-toolbar {
+    height: 100px;
+}
