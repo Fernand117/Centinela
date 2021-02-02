@@ -27,16 +27,24 @@
                     <ion-icon name="log-in"></ion-icon>
                 </span>
             </ion-button>
-            <ion-button class="btnGoogle" expand="block">Iniciar sesión con Google
-                <span>
-                    <ion-icon name="logo-google"></ion-icon>
-                </span>
-            </ion-button>
-            <ion-button class="btnFacebook" expand="block">Iniciar sesión con Facebook
-                <span>
-                    <ion-icon name="logo-facebook"></ion-icon>
-                </span>
-            </ion-button>
         </form>
+        <ion-label>¿No tienes cuena? Registraté para continuar</ion-label>
+        <ion-button type="submit" class="btnLogin" expand="block">Crear cuenta
+            <span>
+                <ion-icon name="person"></ion-icon>
+            </span>
+        </ion-button>
+        <ion-label>ó iniciar sesión con:</ion-label>
+        <ion-button class="btnGoogle" expand="block" [routerLink]="['/registro']">Iniciar sesión con Google
+            <span>
+                <ion-icon name="logo-google"></ion-icon>
+            </span>
+        </ion-button>
+        <ion-button class="btnFacebook" expand="block">Iniciar sesión con Facebook
+            <span>
+                <ion-icon name="logo-facebook"></ion-icon>
+            </span>
+        </ion-button>
+
     </div>
 </ion-content>
