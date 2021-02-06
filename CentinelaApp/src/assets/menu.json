@@ -12,5 +12,10 @@
         "icon": "person",
         "name": "Actividad",
         "redirecTo": "/actividad"
+    },
+    {
+        "icon": "storefront",
+        "name": "Tienda",
+        "redirecTo": "/tienda"
     }
 ]
