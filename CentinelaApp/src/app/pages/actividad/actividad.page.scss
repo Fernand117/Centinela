@@ -1,0 +1,19 @@
+.contenedor {
+    width: 100%;
+    height: 250px;
+    /*background: linear-gradient(197deg, rgb(71, 172, 255) 0%, rgb(22, 143, 199) 13.5%, rgb(10, 109, 175) 33.33%, rgb(15, 47, 73) 100%) !important;*/
+    background-image: url("../../../assets/img/fondo2.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+.conTexto {
+    width: 100%;
+    height: auto;
+    /*background-color: rebeccapurple;*/
+    color: white;
+    margin-top: -50%;
+    padding: 3%;
+    margin-bottom: 13%;
+}

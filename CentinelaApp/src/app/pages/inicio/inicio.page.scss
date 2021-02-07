@@ -16,3 +16,28 @@ table {
     width: 100%;
     text-align: center;
 }
+
+.banner {
+    width: 100%;
+    height: 250px;
+    /*background: linear-gradient(197deg, rgb(71, 172, 255) 0%, rgb(22, 143, 199) 13.5%, rgb(10, 109, 175) 33.33%, rgb(15, 47, 73) 100%) !important;*/
+    background-image: url("../../../assets/img/back_cent.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.banText {
+    width: 100%;
+    height: auto;
+    padding: 3%;
+    margin-top: -60%;
+    /*background-color: rebeccapurple;*/
+    margin-bottom: 5%;
+    color: white;
+}
+
+.blankF {
+    width: 100%;
+    height: 20px;
+}
