@@ -21,6 +21,10 @@
                 <ion-icon name="lock-closed" slot="start"></ion-icon>
                 <ion-input type="password" name="email" id="password" [(ngModel)]="usuarios.password"></ion-input>
             </ion-item>
+            <ion-item>
+                <ion-checkbox color="primary" slot="start" [(ngModel)]="usuarios.statusChekBox" (ionChange)="stateCheck()" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+                <ion-label>Guardar sesión</ion-label>
+            </ion-item>
             <br>
             <ion-button type="submit" class="btnLogin" expand="block">Iniciar sesión
                 <span>
@@ -45,6 +49,5 @@
                 <ion-icon name="logo-facebook"></ion-icon>
             </span>
         </ion-button>
-
     </div>
 </ion-content>

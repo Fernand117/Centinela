@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Articulo Detalle</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="navCar()">
+                <ion-icon name="cart"></ion-icon>
+                <ion-badge id="badge"> {{cont}} </ion-badge>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form>
+        <div class="contenedor">
+            <img src="../../../assets/img/mov.jpg" alt="" class="imgProducto">
+
+            <ion-card>
+                <ion-item>
+                    <ion-label>Sensor de proximidad SHA</ion-label>
+                </ion-item>
+                <ion-card-content>
+                    <p>
+                        <ion-label>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, odit voluptatem nostrum molestiae autem sit enim quam pariatur minima soluta saepe ipsa omnis provident repellat a eligendi porro veniam doloremque.</ion-label>
+                    </p>
+                </ion-card-content>
+                <ion-item>
+                    <ion-label slot="start">$80.00 MXN</ion-label>
+                    <ion-label>Cant:</ion-label>
+                    <ion-input type="number" [(ngModel)]="contador" [ngModelOptions]="{standalone: true}"></ion-input>
+                    <ion-button type="submit" expand="block" (click)="addToCart()" slot="end">Añadir
+                        <ion-icon name="add-circle"></ion-icon>
+                    </ion-button>
+                </ion-item>
+            </ion-card>
+
+        </div>
+    </form>
+</ion-content>

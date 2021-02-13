@@ -5,8 +5,8 @@
         </ion-buttons>
         <ion-title>Centinela</ion-title>
         <ion-buttons slot="end">
-            <ion-button>
-                <ion-icon name="person"></ion-icon>
+            <ion-button (click)="logout()">
+                <ion-icon name="exit"></ion-icon>
             </ion-button>
         </ion-buttons>
     </ion-toolbar>
@@ -17,7 +17,7 @@
 
         <div class="banner"></div>
         <div class="banText">
-            <h1>Bienvenido</h1>
+            <h1>Bienvenido {{usuarios.email}}. </h1>
             <h5>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem debitis facere, quia sint officia tempora aut iste optio ut corporis.</h5>
         </div>
         <div class="cards">

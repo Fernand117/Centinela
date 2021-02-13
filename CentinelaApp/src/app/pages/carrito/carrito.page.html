@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Carrito de compras</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-content>
+            <table>
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                        <th>Precio U.</th>
+                        <th>Precio Total.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{carritoC.id}}</td>
+                        <td>{{carritoC.nombre}}</td>
+                        <td>{{carritoC.cantidad}}</td>
+                        <td>{{carritoC.precio_unitario}}</td>
+                        <td>{{carritoC.precio_total}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ion-card-content>
+        <ion-item>
+            <ion-label>Total: {{total}}</ion-label>
+        </ion-item>
+    </ion-card>
+
+</ion-content>

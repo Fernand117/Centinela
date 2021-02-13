@@ -4,6 +4,12 @@
             <ion-back-button></ion-back-button>
         </ion-buttons>
         <ion-title>Tienda Centinela</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="navCar()">
+                <ion-icon name="cart"></ion-icon>
+                <ion-badge id="badge"> {{cont}} </ion-badge>
+            </ion-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
@@ -17,7 +23,7 @@
         <ion-grid>
             <ion-row>
                 <ion-col>
-                    <ion-card>
+                    <ion-card [routerLink]="['/articulo-detalle']">
                         <ion-card-content>
                             <img src="../../../assets/img/mov.jpg" alt="">
                         </ion-card-content>
@@ -27,7 +33,7 @@
                     </ion-card>
                 </ion-col>
                 <ion-col>
-                    <ion-card>
+                    <ion-card [routerLink]="['/articulo-detalle']">
                         <ion-card-content>
                             <img src="../../../assets/img/rfid.jpg" alt="">
                         </ion-card-content>
@@ -39,7 +45,7 @@
             </ion-row>
             <ion-row>
                 <ion-col>
-                    <ion-card>
+                    <ion-card [routerLink]="['/articulo-detalle']">
                         <ion-card-content>
                             <img src="../../../assets/img/mov.jpg" alt="">
                         </ion-card-content>
@@ -49,7 +55,7 @@
                     </ion-card>
                 </ion-col>
                 <ion-col>
-                    <ion-card>
+                    <ion-card [routerLink]="['/articulo-detalle']">
                         <ion-card-content>
                             <img src="../../../assets/img/rfid.jpg" alt="">
                         </ion-card-content>
@@ -61,7 +67,7 @@
             </ion-row>
             <ion-row>
                 <ion-col>
-                    <ion-card>
+                    <ion-card [routerLink]="['/articulo-detalle']">
                         <ion-card-content>
                             <img src="../../../assets/img/mov.jpg" alt="">
                         </ion-card-content>
@@ -71,7 +77,7 @@
                     </ion-card>
                 </ion-col>
                 <ion-col>
-                    <ion-card>
+                    <ion-card [routerLink]="['/articulo-detalle']">
                         <ion-card-content>
                             <img src="../../../assets/img/rfid.jpg" alt="">
                         </ion-card-content>

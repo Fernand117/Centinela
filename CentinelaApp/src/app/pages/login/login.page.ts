@@ -11,6 +11,7 @@ import { UsuarioModule } from '../../models/usuario/usuario.module';
 export class LoginPage implements OnInit {
 
   usuarios: UsuarioModule = new UsuarioModule();
+  status: string;
 
   constructor(
     private alertController: AlertController,
@@ -19,6 +20,15 @@ export class LoginPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    status = localStorage.getItem('statusCheckBox');
+    if (status == "true"){
+      console.log(status);
+      this.router.navigateByUrl("inicio");
+    }
+  }
+
+  stateCheck(){
+    console.log(this.usuarios.statusChekBox);
   }
 
   async alertMsg(sheader, mensaje){
@@ -38,6 +48,8 @@ export class LoginPage implements OnInit {
       duration: 2000
     });
     await load.present();
+    this.guardarDatos();
+
     load.onDidDismiss();
   }
 
@@ -49,5 +61,11 @@ export class LoginPage implements OnInit {
       this.loadLogin();
       this.router.navigateByUrl("inicio");
     }
+  }
+
+  guardarDatos(){
+    localStorage.setItem('email', this.usuarios.email);
+    localStorage.setItem('password', this.usuarios.password);
+    localStorage.setItem('statusCheckBox', String(this.usuarios.statusChekBox));
   }
 }

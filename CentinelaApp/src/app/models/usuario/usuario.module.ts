@@ -14,9 +14,11 @@ import { strict } from 'assert';
 export class UsuarioModule {
   email: string;
   password: string;
+  statusChekBox: boolean;
 
   constructor(){
     this.email = "";
     this.password = "";
+    this.statusChekBox = false;
   }
 }
