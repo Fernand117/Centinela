@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CarritoModule } from './../../models/carrito/carrito.module';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-articulo-detalle',
@@ -10,11 +11,14 @@ import { Router } from '@angular/router';
 export class ArticuloDetallePage implements OnInit {
 
   carrito: CarritoModule = new CarritoModule();
+  carritoC: JSON;
+  car: any;
   contador = 0;
   cont = 0;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private alert: AlertController
   ) {}
 
   ngOnInit() {
@@ -22,16 +26,33 @@ export class ArticuloDetallePage implements OnInit {
   }
 
   addToCart(){
-    this.cont = Number(this.cont) + Number(this.contador);
-    localStorage.setItem("cantidad", String(this.cont));
-    console.log(this.cont);
-    this.carrito.id = 2;
-    this.carrito.nombre = "Sensor SHbA";
-    this.carrito.precio_unitario = 85.00;
-    this.carrito.cantidad = this.cont;
-    this.carrito.precio_total = Number(this.carrito.precio_unitario) * Number(this.carrito.cantidad);
-    localStorage.setItem('carrito', JSON.stringify(this.carrito));
-    this.cargarBadge();
+    if (Number(this.contador) == 0) {
+      this.alertMsg("Ocurrió un error","Ingrese por favor una cantidad mayor a 0.");
+    } else {
+      this.carritoC = JSON.parse(localStorage.getItem('carrito'));
+      this.cont = Number(this.cont) + Number(this.contador);
+      localStorage.setItem("cantidad", String(this.cont));
+      console.log(this.cont);
+      this.carrito.id = 2;
+      this.carrito.nombre = "Sensor SHbA";
+      this.carrito.precio_unitario = 85.00;
+      this.carrito.cantidad = this.cont;
+      this.carrito.precio_total = Number(this.carrito.precio_unitario) * Number(this.carrito.cantidad);
+      this.car = JSON.stringify(this.carritoC) + JSON.stringify(this.carrito);
+      console.log("Carrito: " + JSON.stringify(this.car));
+      localStorage.setItem('carrito', JSON.stringify(this.car));
+      this.cargarBadge();
+    }
+  }
+
+  async alertMsg(sheader, mensaje){
+    const alert = await this.alert.create({
+      header: 'Alerta',
+      subHeader: sheader,
+      message: mensaje,
+      buttons: ['Aceptar']
+    });
+    await alert.present();
   }
 
   cargarBadge(){

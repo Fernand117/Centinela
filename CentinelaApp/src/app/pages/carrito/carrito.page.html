@@ -14,10 +14,10 @@
                 <thead>
                     <tr>
                         <th>id</th>
-                        <th>Nombre</th>
-                        <th>Cantidad</th>
-                        <th>Precio U.</th>
-                        <th>Precio Total.</th>
+                        <th>Nom</th>
+                        <th>Cant</th>
+                        <th>Pre. U.</th>
+                        <th>Pre. T.</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,15 +25,26 @@
                         <td>{{carritoC.id}}</td>
                         <td>{{carritoC.nombre}}</td>
                         <td>{{carritoC.cantidad}}</td>
-                        <td>{{carritoC.precio_unitario}}</td>
-                        <td>{{carritoC.precio_total}}</td>
+                        <td>$ {{carritoC.precio_unitario}}</td>
+                        <td>$ {{carritoC.precio_total}}</td>
                     </tr>
                 </tbody>
             </table>
         </ion-card-content>
         <ion-item>
-            <ion-label>Total: {{total}}</ion-label>
+            <ion-label>Total: $ {{total}} MXN</ion-label>
         </ion-item>
     </ion-card>
-
+    <ion-card>
+        <ion-item>
+            <ion-icon slot="start" name="card"></ion-icon>
+            <ion-label>Métodos de pago.</ion-label>
+        </ion-item>
+        <ion-card-content>
+            <ion-button expand="block">PayPal</ion-button>
+            <ion-button expand="block">Visa</ion-button>
+            <ion-button expand="block">MasterCard</ion-button>
+            <ion-button expand="block">MercadoPago</ion-button>
+        </ion-card-content>
+    </ion-card>
 </ion-content>
