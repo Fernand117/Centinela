@@ -22,4 +22,5 @@ Route::post('login/usuarios', 'UsuariosController@login');
 Route::get('lista/usuarios', 'UsuariosController@listarUsuarios');
 Route::post('eliminar/usuarios', 'UsuariosController@eliminarUsuario');
 
-Route::post('crear/cliente', 'PruebMongo@guardarCliente');
+Route::post('crear/cliente', 'ClienteMongoController@registrarCliente');
+Route::post('login/cliente', 'ClienteMongoController@login');
