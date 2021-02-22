@@ -23,7 +23,7 @@ class UsuariosController extends Controller
 
         $consultaEmail = DB::select('select * from usuarios where  email = ?', [$datos['email']]);
         $itemEmail = json_decode(json_encode($consultaEmail), true);
-        
+
         if ($itemUsuario != null) {
             $usuarioRespuesta = "El nombre de usuario ya existe";
             return response()->json(['Mensaje' => $usuarioRespuesta]);
@@ -58,9 +58,9 @@ class UsuariosController extends Controller
         $id = $datos['id'];
         $sql = DB::delete('delete from usuarios where id = ?', [$id]);
         if($sql == 1){
-            return response()->json(['Mensaje' => 'Usuarios eliminado.']);        
+            return response()->json(['Mensaje' => 'Usuarios eliminado.']);
         } else {
             return response()->json(['Mensaje' => 'El usuario que intenta eliminar no existe.']);
-        }        
+        }
     }
 }
