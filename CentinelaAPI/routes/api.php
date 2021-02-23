@@ -23,10 +23,38 @@ Route::post('login/usuarios', 'UsuariosController@login');
 Route::get('lista/usuarios', 'UsuariosController@listarUsuarios');
 Route::post('eliminar/usuarios', 'UsuariosController@eliminarUsuario');
 
+Route::get('lista/tipoempleado', 'TipoEmpleadosController@listarTipoEmpleados');
+Route::post('registrar/tipoempleado', 'TipoEmpleadosController@registrarTipoEmpleado');
+Route::post('editar/tipoempleado', 'TipoEmpleadosController@editarTipoEmpleado');
+Route::post('eliminar/tipoempleado', 'TipoEmpleadosController@eliminarTipoEmpleado');
+
+Route::get('lista/empleados', 'EmpleadosController@listarEmpleados');
+Route::post('registrar/empleado', 'EmpleadosController@registrarEmpleado');
+Route::post('editar/empleado', 'EmpleadosController@editarEmpleado');
+Route::post('eliminar/empleado', 'EmpleadosController@eliminarEmpleado');
+
+Route::get('lista/direcciones', 'DireccionController@listarDirecciones');
+Route::post('registrar/direccion', 'DireccionController@registrarDireccion');
+Route::post('editar/direccion', 'DireccionController@editarDireccion');
+Route::post('eliminar/direccion', 'DireccionController@eliminarDireccion');
+
 Route::get('lista/categorias', 'CategoriasController@listarCategorias');
 Route::post('registrar/categoria', 'CategoriasController@registrarCategoria');
 Route::post('editar/categoria', 'CategoriasController@editarCategoria');
 Route::post('eliminar/categoria', 'CategoriasController@eliminarCategoria');
+
+Route::get('lista/productos', 'ProductosController@listarProductos');
+Route::post('registrar/producto', 'ProductosController@registrarProducto');
+Route::post('editar/producto', 'ProductosController@editarProducto');
+Route::post('eliminar/producto', 'ProductosController@eliminarProducto');
+
+Route::get('lista/pedidos', 'PedidosController@listarPedidosGeneral');
+Route::post('lista/pedidos/cliente', 'PedidosController@listarPedidoCliente');
+Route::post('registrar/pedido', 'PedidosController@registrarPedido');
+
+Route::post('lista/detalles', 'DetallesPedidosController@listarDetallePedido');
+Route::post('registrar/detalle', 'DetallesPedidosController@registrarDetallePedido');
+Route::post('eliminar/detalle', 'DetallesPedidosController@eliminarDetalleProducto');
 
 /**RUTAS PARA CONSUMO DE LA APLICACIÓN CON CONEXIÓN A MONGODB */
 Route::post('crear/cliente', 'ClienteMongoController@registrarCliente');

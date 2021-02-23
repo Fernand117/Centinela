@@ -9,6 +9,26 @@ use Illuminate\Support\Facades\DB;
 
 class PedidosController extends Controller
 {
+    public function listarPedidosGeneral(){
+        $pedidosConsulta = DB::select('select * from pedidos');
+        if ($pedidosConsulta != null) {
+            return response()->json(['Pedidos' => $pedidosConsulta]);
+        } else {
+            return response()->json(['Pedidos' => 'Aún no hay pedidos realizados']);
+        }
+    }
+
+    public function listarPedidoCliente(Request $request){
+        $datos = $request->all();
+        $cliente = $datos['cliente'];
+        $pedidosConsulta = DB::select('select * from pedidos where cliente = ?', [$cliente]);
+        if ($pedidosConsulta != null) {
+            return response()->json(['Pedidos' => $pedidosConsulta]);
+        } else {
+            return response()->json(['Pedidos' => 'Aún no tienes pedidos realizados.']);
+        }
+    }
+
     public function registrarPedido(Request $request){
         $datos = $request->all();
         $consultaPedidos = DB::select('select numero_pedido from pedidos grup by numero_pedido ASC limit 1');

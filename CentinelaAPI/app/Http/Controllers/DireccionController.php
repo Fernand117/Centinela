@@ -27,4 +27,23 @@ class DireccionController extends Controller
         $direccion->save();
         return response()->json(['Mensaje' => 'Dirección registrada correctamente']);
     }
+
+    public function editarDireccion(Request $request){
+        $datos = $request->all();
+        $idDireccion = $datos['idDireccion'];
+        $direccion = direccion::find($idDireccion);
+        $direccion->direccion = $datos['direccion'];
+        $direccion->ciudad = $datos['ciudad'];
+        $direccion->estado = $datos['estado'];
+        $direccion->idEmpleado = $datos['idEmpleado'];
+        $direccion->update();
+        return response()->json(['Mensaje' => 'Dirección actualizada correctamente']);
+    }
+
+    public function eliminarDireccion(Request $request){
+        $datos = $request->all();
+        $idDireccion = $datos['idDireccion'];
+        DB::delete('delete from direccion where id = ?', [$idDireccion]);
+        return response()->json(['Mensaje' => 'Dirección eliminada.']);
+    }
 }
