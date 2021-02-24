@@ -59,3 +59,7 @@ Route::post('eliminar/detalle', 'DetallesPedidosController@eliminarDetalleProduc
 /**RUTAS PARA CONSUMO DE LA APLICACIÓN CON CONEXIÓN A MONGODB */
 Route::post('crear/cliente', 'ClienteMongoController@registrarCliente');
 Route::post('login/cliente', 'ClienteMongoController@login');
+
+Route::get('lista/general-sensores', 'SensoresMongoController@listaDatosGeneral');
+Route::post('lista/datos-tipo-sensores', 'SensoresMongoController@listaDatosXTipoSensor');
+Route::post('registrar/datos-sensores', 'SensoresMongoController@registrarSensorDatos');
