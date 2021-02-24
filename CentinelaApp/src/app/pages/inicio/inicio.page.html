@@ -17,14 +17,15 @@
 
         <div class="banner"></div>
         <div class="banText">
-            <h1>Bienvenido {{usuarios.email}}. </h1>
-            <h5>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem debitis facere, quia sint officia tempora aut iste optio ut corporis.</h5>
+            <h3>Bienvenido</h3>
+            <h1>{{usuario}}</h1>
+            <!--<h5>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem debitis facere, quia sint officia tempora aut iste optio ut corporis.</h5>-->
         </div>
-        <div class="cards">
-            <ion-card>
+        <div class="cards" name="cards" id="cards">
+            <ion-card name="card" id="card" *ngFor="let item of datosSensores">
                 <ion-item>
                     <ion-icon name="warning" slot="start"></ion-icon>
-                    <ion-label>Registro de movimiento.</ion-label>
+                    <ion-label>Registro de {{item.nombre}}</ion-label>
                     <ion-button fill="outline" slot="end">Ver</ion-button>
                 </ion-item>
 
@@ -33,146 +34,15 @@
                         <thead>
                             <tr>
                                 <th>Sensor</th>
-                                <th>Lugar</th>
                                 <th>Movimiento</th>
                                 <th>Fecha y hora</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>01</td>
-                                <td>HAB: 01</td>
-                                <td>Si</td>
-                                <td>2020-11-21 2:48:25AM</td>
-                            </tr>
-                            <tr>
-                                <td>01</td>
-                                <td>HAB: 02</td>
-                                <td>Si</td>
-                                <td>2020-11-21 2:48:25AM</td>
-                            </tr>
-                            <tr>
-                                <td>01</td>
-                                <td>HAB: 03</td>
-                                <td>Si</td>
-                                <td>2020-11-21 2:48:25AM</td>
-                            </tr>
-                            <tr>
-                                <td>01</td>
-                                <td>HAB: 04</td>
-                                <td>Si</td>
-                                <td>2020-11-21 2:48:25AM</td>
-                            </tr>
-                            <tr>
-                                <td>01</td>
-                                <td>HAB: 05</td>
-                                <td>Si</td>
-                                <td>2020-11-21 2:48:25AM</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </ion-card-content>
-            </ion-card>
-
-            <ion-card>
-                <ion-item>
-                    <ion-icon name="warning" slot="start"></ion-icon>
-                    <ion-label>Registro de próximidad.</ion-label>
-                    <ion-button fill="outline" slot="end">Ver</ion-button>
-                </ion-item>
-
-                <ion-card-content>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Sensor</th>
-                                <th>Lugar</th>
-                                <th>Próximidad</th>
-                                <th>Fecha y hora</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>01</td>
-                                <td>HAB: 02</td>
-                                <td>10 M</td>
-                                <td>2020-11-21 2:48:25AM</td>
-                            </tr>
-                            <tr>
-                                <td>01</td>
-                                <td>HAB: 03</td>
-                                <td>34 M</td>
-                                <td>2020-11-21 2:48:25AM</td>
-                            </tr>
-                            <tr>
-                                <td>01</td>
-                                <td>HAB: 04</td>
-                                <td>56 M</td>
-                                <td>2020-11-21 2:48:25AM</td>
-                            </tr>
-                            <tr>
-                                <td>01</td>
-                                <td>HAB: 05</td>
-                                <td>25 M</td>
-                                <td>2020-11-21 2:48:25AM</td>
-                            </tr>
-                            <tr>
-                                <td>01</td>
-                                <td>HAB: 06</td>
-                                <td>100 M</td>
-                                <td>2020-11-21 2:48:25AM</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </ion-card-content>
-            </ion-card>
-            <ion-card>
-                <ion-item>
-                    <ion-icon name="warning" slot="start"></ion-icon>
-                    <ion-label>Registro de próximidad.</ion-label>
-                    <ion-button fill="outline" slot="end">Ver</ion-button>
-                </ion-item>
-
-                <ion-card-content>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Sensor</th>
-                                <th>Lugar</th>
-                                <th>Próximidad</th>
-                                <th>Fecha y hora</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>01</td>
-                                <td>HAB: 02</td>
-                                <td>10 M</td>
-                                <td>2020-11-21 2:48:25AM</td>
-                            </tr>
-                            <tr>
-                                <td>01</td>
-                                <td>HAB: 03</td>
-                                <td>34 M</td>
-                                <td>2020-11-21 2:48:25AM</td>
-                            </tr>
-                            <tr>
-                                <td>01</td>
-                                <td>HAB: 04</td>
-                                <td>56 M</td>
-                                <td>2020-11-21 2:48:25AM</td>
-                            </tr>
-                            <tr>
-                                <td>01</td>
-                                <td>HAB: 05</td>
-                                <td>25 M</td>
-                                <td>2020-11-21 2:48:25AM</td>
-                            </tr>
-                            <tr>
-                                <td>01</td>
-                                <td>HAB: 06</td>
-                                <td>100 M</td>
-                                <td>2020-11-21 2:48:25AM</td>
+                                <td>{{item.tipo_sensor}}</td>
+                                <td>{{item.datos}}</td>
+                                <td>{{item.fecha}}</td>
                             </tr>
                         </tbody>
                     </table>

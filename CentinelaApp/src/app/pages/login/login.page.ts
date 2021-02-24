@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { UsuarioModule } from '../../models/usuario/usuario.module';
+import { ServiceService } from '../../services/service.service';
 
 @Component({
   selector: 'app-login',
@@ -11,18 +12,19 @@ import { UsuarioModule } from '../../models/usuario/usuario.module';
 export class LoginPage implements OnInit {
 
   usuarios: UsuarioModule = new UsuarioModule();
+  formData: FormData = new FormData();
   status: string;
 
   constructor(
     private alertController: AlertController,
     private loadingController: LoadingController,
+    private apiservice: ServiceService,
     private router: Router
   ) { }
 
   ngOnInit() {
     status = localStorage.getItem('statusCheckBox');
     if (status == "true"){
-      console.log(status);
       this.router.navigateByUrl("inicio");
     }
   }
@@ -34,7 +36,7 @@ export class LoginPage implements OnInit {
   async alertMsg(sheader, mensaje){
     const alert = await this.alertController.create({
       header: 'Alerta',
-      subHeader: sheader,
+      subHeader: 'ERROR: ' + sheader + ' NO ENCONTRADO',
       message: mensaje,
       buttons: ['Aceptar']
     });
@@ -48,24 +50,32 @@ export class LoginPage implements OnInit {
       duration: 2000
     });
     await load.present();
-    this.guardarDatos();
 
+    this.formData.append('nombre', this.usuarios.usuario);
+    this.formData.append('password', this.usuarios.password);
+    this.apiservice.login(this.formData).subscribe(
+      respuesta => {
+        this.guardarDatos(respuesta['Datos']);
+      }, err => {
+        if (err['status'] == 404){
+          this.alertMsg(err['status'], err['error']['Datos']);
+        }
+      }
+    );
     load.onDidDismiss();
   }
 
   validarFormulario(form){
-    if (this.usuarios.email == "" || this.usuarios.password == "") {
+    if (this.usuarios.usuario == "" || this.usuarios.password == "") {
       this.alertMsg("Ocurrió un error", "Por favor, rellene todos los campos solicitados.");
     } else {
-      console.log(this.usuarios.email, this.usuarios.password);
       this.loadLogin();
-      this.router.navigateByUrl("inicio");
     }
   }
 
-  guardarDatos(){
-    localStorage.setItem('email', this.usuarios.email);
-    localStorage.setItem('password', this.usuarios.password);
+  guardarDatos(datos){
     localStorage.setItem('statusCheckBox', String(this.usuarios.statusChekBox));
+    localStorage.setItem('Usuario', JSON.stringify(datos));
+    this.router.navigateByUrl("inicio");
   }
 }

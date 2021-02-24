@@ -12,14 +12,14 @@
         <form (ngSubmit)="validarFormulario(form)" #form="ngForm">
             <ion-label>Inicia sesión para continuar</ion-label>
             <ion-item>
-                <ion-label position="floating">Correo</ion-label>
-                <ion-icon name="mail" slot="start"></ion-icon>
-                <ion-input type="email" name="email" id="email" [(ngModel)]="usuarios.email"></ion-input>
+                <ion-label position="floating">Usuario</ion-label>
+                <ion-icon name="person" slot="start"></ion-icon>
+                <ion-input type="text" name="user" id="user" [(ngModel)]="usuarios.usuario"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label position="floating">Contraseña</ion-label>
                 <ion-icon name="lock-closed" slot="start"></ion-icon>
-                <ion-input type="password" name="email" id="password" [(ngModel)]="usuarios.password"></ion-input>
+                <ion-input type="password" name="password" id="password" [(ngModel)]="usuarios.password"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-checkbox color="primary" slot="start" [(ngModel)]="usuarios.statusChekBox" (ionChange)="stateCheck()" [ngModelOptions]="{standalone: true}"></ion-checkbox>

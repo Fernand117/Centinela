@@ -22,7 +22,7 @@ class SensoresMongoController extends Controller
         if($respuesta != null){
             return response()->json(['Datos' => $respuesta]);
         } else {
-            return response()->json(['Datos' => 'Aún no hay datos registrados por los sensores.']);
+            return response()->json(['Datos' => 'Aún no hay datos registrados por los sensores.'], 404);
         }
     }
 
@@ -54,7 +54,7 @@ class SensoresMongoController extends Controller
         $sensor->nombre = $datos['nombre'];
         $sensor->datos = $datos['datos'];
         $sensor->tipo_sensor = $datos['tipoSensor'];
-        $sensor->fecha = 'new Date()';
+        $sensor->fecha = date('l jS \of F Y h:i:s A');
 
         $conexion = new MongoDBClient();
         $db = $conexion->dbcentinela;

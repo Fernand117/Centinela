@@ -59,7 +59,7 @@ class ClienteMongoController extends Controller
         if($respuesta != null){
             return response()->json(['Datos' => $respuesta]);
         } else {
-            return response()->json(['Datos' => 'Usuario o contraseña incorrectos.']);
+            return response()->json(['Datos' => 'Usuario o contraseña incorrectos.'], 404);
         }
     }
 }
