@@ -14,7 +14,7 @@ export class InicioPage implements OnInit {
   datosSensores: any;
   datos: any;
   usuario: any;
-  status: String;
+  status: string;
   usuarios: UsuarioModule = new UsuarioModule();
 
   constructor(
@@ -47,7 +47,6 @@ export class InicioPage implements OnInit {
   cargarDatosGeneralSensores(){
     this.apiService.listaGeneralSensores().subscribe(
       respuesta => {
-        console.log(respuesta['Datos']);
         this.datosSensores = respuesta['Datos'];
       }, error => {
         if (error['status'] == 404){

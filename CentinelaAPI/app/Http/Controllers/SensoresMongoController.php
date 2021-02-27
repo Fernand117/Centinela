@@ -43,18 +43,20 @@ class SensoresMongoController extends Controller
         if($respuesta != null){
             return response()->json(['Datos' => $respuesta]);
         } else {
-            return response()->json(['Datos' => 'Aún no hay datos registrados por los sensores.']);
+            return response()->json(['Datos' => 'Aún no hay datos registrados por los sensores.'], 404);
         }
     }
 
     public function registrarSensorDatos(Request $request){
+        setlocale(LC_TIME, 'es_ES.UTF-8');
+        date_default_timezone_set("America/Mexico_City");
         $datos = $request->all();
         
         $sensor = new SensoresMongo();
         $sensor->nombre = $datos['nombre'];
         $sensor->datos = $datos['datos'];
         $sensor->tipo_sensor = $datos['tipoSensor'];
-        $sensor->fecha = date('l jS \of F Y h:i:s A');
+        $sensor->fecha = date('d.m.y, h:i:s A');
 
         $conexion = new MongoDBClient();
         $db = $conexion->dbcentinela;
