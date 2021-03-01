@@ -44,6 +44,7 @@ Route::post('editar/categoria', 'CategoriasController@editarCategoria');
 Route::post('eliminar/categoria', 'CategoriasController@eliminarCategoria');
 
 Route::get('lista/productos', 'ProductosController@listarProductos');
+Route::post('lista/productos-categorias', 'ProductosController@listarProductosXCategoria');
 Route::post('registrar/producto', 'ProductosController@registrarProducto');
 Route::post('editar/producto', 'ProductosController@editarProducto');
 Route::post('eliminar/producto', 'ProductosController@eliminarProducto');

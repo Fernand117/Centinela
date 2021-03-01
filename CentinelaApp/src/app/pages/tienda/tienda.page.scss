@@ -23,3 +23,23 @@ img {
     width: 100px;
     height: 100px;
 }
+
+.items {
+    width: 100%;
+    height: 100%;
+}
+
+.itemCategoria {
+    width: 45%;
+    height: 200px;
+    padding: 15px;
+    -webkit-box-shadow: 2px 2px 12px 2px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 12px 2px rgba(0, 0, 0, 0.5);
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+    float: left;
+    margin-left: 3.5%;
+    margin-top: 10%;
+    margin-bottom: 5%;
+}

@@ -23,4 +23,12 @@ export class ServiceService {
   listaGeneralSensores(){
     return this.http.get(`${this.url}/lista/general-sensores`);
   }
+
+  listaProductos(datos: any){
+    return this.http.post(`${this.url}/lista/productos-categorias`, datos);
+  }
+
+  listaCategorias(){
+    return this.http.get(`${this.url}/lista/categorias`);
+  }
 }

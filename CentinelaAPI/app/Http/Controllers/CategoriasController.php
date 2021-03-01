@@ -10,10 +10,14 @@ class CategoriasController extends Controller
 {
     public function listarCategorias(){
         $listaCategorias = DB::select('select * from categorias');
+        $items = json_decode(json_encode($listaCategorias), true);
         if($listaCategorias != null){
-            return response()->json(['Categorias' => $listaCategorias]);
+            for ($i=0; $i < count($listaCategorias); $i++) { 
+                $items[$i]['imagen'] = 'http://'.$_SERVER['SERVER_NAME'].'/centinelaApi/img/categorias/'.$items[$i]['imagen'];
+            }
+            return response()->json(['Categorias' => $items]);
         } else {
-            return response()->json(['Categorias' => 'No existen categorias.']);
+            return response()->json(['Categorias' => 'No existen categorias.'], 404);
         }
     }
 

@@ -8,12 +8,32 @@ use Illuminate\Support\Facades\DB;
 
 class ProductosController extends Controller
 {
+    public function listarProductosXCategoria(Request $request)
+    {
+        $datos = $request->all();
+        $idCategoria = $datos['idCategoria'];
+        $consultarProductos = DB::select('select * from productos where idCategoria = ?', [$idCategoria]);
+        $items = json_decode(json_encode($consultarProductos), true);
+        if($consultarProductos != null){
+            for($i = 0; $i < count($consultarProductos); $i++){
+                $items[$i]['imagen'] = 'http://'.$_SERVER['SERVER_NAME'].'/centinelaApi/img/productos/'.$items[$i]['imagen'];
+            }
+            return response()->json(['Productos' => $items]);
+        } else {
+            return response()->json(['Productos' => 'Aún no hay productos registrados.'], 404);
+        }
+    }
+
     public function listarProductos(){
         $consultarProductos = DB::select('select * from productos');
+        $items = json_decode(json_encode($consultarProductos), true);
         if($consultarProductos != null){
-            return response()->json(['Productos' => $consultarProductos]);
+            for($i = 0; $i < count($consultarProductos); $i++){
+                $items[$i]['imagen'] = 'http://'.$_SERVER['SERVER_NAME'].'/centinelaApi/img/productos/'.$items[$i]['imagen'];
+            }
+            return response()->json(['Productos' => $items]);
         } else {
-            return response()->json(['Productos' => 'Aún no hay productos registrados.']);
+            return response()->json(['Productos' => 'Aún no hay productos registrados.'], 404);
         }
     }
 

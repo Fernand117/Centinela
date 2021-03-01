@@ -19,75 +19,12 @@
         <h1>Tienda</h1>
         <p>Complementos <br> para mejorar la seguridad <br> de tu hogar.</p>
     </div>
-    <div class="items">
-        <ion-grid>
-            <ion-row>
-                <ion-col>
-                    <ion-card [routerLink]="['/articulo-detalle']">
-                        <ion-card-content>
-                            <img src="../../../assets/img/mov.jpg" alt="">
-                        </ion-card-content>
-                        <ion-item>
-                            <ion-label>Sensores</ion-label>
-                        </ion-item>
-                    </ion-card>
-                </ion-col>
-                <ion-col>
-                    <ion-card [routerLink]="['/articulo-detalle']">
-                        <ion-card-content>
-                            <img src="../../../assets/img/rfid.jpg" alt="">
-                        </ion-card-content>
-                        <ion-item>
-                            <ion-label>Cerraduras</ion-label>
-                        </ion-item>
-                    </ion-card>
-                </ion-col>
-            </ion-row>
-            <ion-row>
-                <ion-col>
-                    <ion-card [routerLink]="['/articulo-detalle']">
-                        <ion-card-content>
-                            <img src="../../../assets/img/mov.jpg" alt="">
-                        </ion-card-content>
-                        <ion-item>
-                            <ion-label>Sensores</ion-label>
-                        </ion-item>
-                    </ion-card>
-                </ion-col>
-                <ion-col>
-                    <ion-card [routerLink]="['/articulo-detalle']">
-                        <ion-card-content>
-                            <img src="../../../assets/img/rfid.jpg" alt="">
-                        </ion-card-content>
-                        <ion-item>
-                            <ion-label>Cerraduras</ion-label>
-                        </ion-item>
-                    </ion-card>
-                </ion-col>
-            </ion-row>
-            <ion-row>
-                <ion-col>
-                    <ion-card [routerLink]="['/articulo-detalle']">
-                        <ion-card-content>
-                            <img src="../../../assets/img/mov.jpg" alt="">
-                        </ion-card-content>
-                        <ion-item>
-                            <ion-label>Sensores</ion-label>
-                        </ion-item>
-                    </ion-card>
-                </ion-col>
-                <ion-col>
-                    <ion-card [routerLink]="['/articulo-detalle']">
-                        <ion-card-content>
-                            <img src="../../../assets/img/rfid.jpg" alt="">
-                        </ion-card-content>
-                        <ion-item>
-                            <ion-label>Cerraduras</ion-label>
-                        </ion-item>
-                    </ion-card>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
+    <div class="items" id="items" name="items">
+        <div class="itemCategoria" *ngFor="let item of categorias" [routerLink]="['/articulo', item.id]">
+            <img src="{{item.imagen}}" alt="">
+            <h6>{{item.nombre}}</h6>
+        </div>
     </div>
+    <div class="f"></div>
 
 </ion-content>

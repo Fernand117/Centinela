@@ -22,7 +22,8 @@ const routes: Routes = [
   {
     path: 'inicio',
     loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
-  },  {
+  },
+  {
     path: 'actividad',
     loadChildren: () => import('./pages/actividad/actividad.module').then( m => m.ActividadPageModule)
   },
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'carrito',
     loadChildren: () => import('./pages/carrito/carrito.module').then( m => m.CarritoPageModule)
+  },
+  {
+    path: 'articulo/:id',
+    loadChildren: () => import('./pages/articulo/articulo.module').then( m => m.ArticuloPageModule)
   },
 
 
