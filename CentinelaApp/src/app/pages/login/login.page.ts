@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { Router} from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { UsuarioModule } from '../../models/usuario/usuario.module';
 import { ServiceService } from '../../services/service.service';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,7 @@ export class LoginPage implements OnInit {
     private alertController: AlertController,
     private loadingController: LoadingController,
     private apiservice: ServiceService,
+    private googlePlus: GooglePlus,
     private router: Router
   ) { }
 
@@ -43,6 +45,16 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
+  loginGoogle(){
+    this.googlePlus.login({})
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }
+
   async loadLogin(){
     const load = await this.loadingController.create({
       cssClass: "my-custom-class",
@@ -53,15 +65,17 @@ export class LoginPage implements OnInit {
 
     this.formData.append('nombre', this.usuarios.usuario);
     this.formData.append('password', this.usuarios.password);
+
     this.apiservice.login(this.formData).subscribe(
       respuesta => {
         this.guardarDatos(respuesta['Datos']);
       }, err => {
         if (err['status'] == 404){
-          this.alertMsg(err['status'], err['error']['Datos']);
+          this.alertMsg(err['error']['Datos'], err['status']);
         }
       }
     );
+
     load.onDidDismiss();
   }
 

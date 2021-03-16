@@ -29,7 +29,7 @@ export class InicioPage implements OnInit {
 
   logout(){
     status = localStorage.getItem('statusCheckBox');
-    if (status == "false"){
+    if (status == "false" || status == "true"){
       this.eliminarDatos();
     }
     this.router.navigateByUrl("login");
@@ -42,6 +42,7 @@ export class InicioPage implements OnInit {
 
   eliminarDatos(){
     localStorage.removeItem('Usuario');
+    localStorage.removeItem('statusCheckBox');
   }
 
   cargarDatosGeneralSensores(){
@@ -52,6 +53,8 @@ export class InicioPage implements OnInit {
         if (error['status'] == 404){
           this.msjErrorGDatos = error['error']['Datos'];
           document.getElementById("cards").innerHTML = '<div class="msjError" style="margin-top:50%; padding: 16px; text-align: center; font-size: 18px; color: #263238;">' + this.msjErrorGDatos + '</div>';
+        } else {
+          document.getElementById("cards").innerHTML = '<div class="msjError" style="margin-top:50%; padding: 16px; text-align: center; font-size: 18px; color: #263238;"> No hay conexión con el servidor </div>';
         }
       }
     );

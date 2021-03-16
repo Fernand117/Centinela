@@ -33,13 +33,13 @@
             </ion-button>
         </form>
         <ion-label>¿No tienes cuena? Registraté para continuar</ion-label>
-        <ion-button type="submit" class="btnLogin" expand="block">Crear cuenta
+        <ion-button type="submit" class="btnLogin" expand="block" [routerLink]="['/registro']">Crear cuenta
             <span>
                 <ion-icon name="person"></ion-icon>
             </span>
         </ion-button>
-        <ion-label>ó iniciar sesión con:</ion-label>
-        <ion-button class="btnGoogle" expand="block" [routerLink]="['/registro']">Iniciar sesión con Google
+        <ion-label>ó inicia sesión con:</ion-label>
+        <ion-button class="btnGoogle" expand="block" (click)="loginGoogle()">Iniciar sesión con Google
             <span>
                 <ion-icon name="logo-google"></ion-icon>
             </span>

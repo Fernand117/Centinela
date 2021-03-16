@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CarritoModule } from './../../models/carrito/carrito.module';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { ServiceService } from '../../services/service.service';
 
 @Component({
   selector: 'app-articulo-detalle',
@@ -11,15 +12,21 @@ import { AlertController } from '@ionic/angular';
 export class ArticuloDetallePage implements OnInit {
 
   carrito: CarritoModule = new CarritoModule();
+  formData: FormData = new FormData();
+  producto: any;
   carritoC: JSON;
   car: any;
   contador = 0;
   cont = 0;
 
   constructor(
+    private route: ActivatedRoute,
     private router: Router,
-    private alert: AlertController
+    private alert: AlertController,
+    private apiService: ServiceService
   ) {}
+
+  id = this.route.snapshot.paramMap.get('id');
 
   ngOnInit() {
     this.cargarBadge();
@@ -29,18 +36,6 @@ export class ArticuloDetallePage implements OnInit {
     if (Number(this.contador) == 0) {
       this.alertMsg("Ocurrió un error","Ingrese por favor una cantidad mayor a 0.");
     } else {
-      this.carritoC = JSON.parse(localStorage.getItem('carrito'));
-      this.cont = Number(this.cont) + Number(this.contador);
-      localStorage.setItem("cantidad", String(this.cont));
-      console.log(this.cont);
-      this.carrito.id = 2;
-      this.carrito.nombre = "Sensor SHbA";
-      this.carrito.precio_unitario = 85.00;
-      this.carrito.cantidad = this.cont;
-      this.carrito.precio_total = Number(this.carrito.precio_unitario) * Number(this.carrito.cantidad);
-      this.car = JSON.stringify(this.carritoC) + JSON.stringify(this.carrito);
-      console.log("Carrito: " + JSON.stringify(this.car));
-      localStorage.setItem('carrito', JSON.stringify(this.car));
       this.cargarBadge();
     }
   }
@@ -63,4 +58,18 @@ export class ArticuloDetallePage implements OnInit {
     this.router.navigateByUrl("carrito");
   }
 
+  cargarProductoDetalle(){
+    this.formData.append('idProducto', this.id);
+    this.apiService.listaProductoDetalle(this.formData).subscribe(
+      respuesta => {
+        this.producto = respuesta['Producto'];
+      }, error => {
+        if (error['status'] == 404) {
+          document.getElementById("producto").innerHTML = '<div class="msjError" style="margin-top:50%; padding: 16px; text-align: center; font-size: 18px; color: #263238;">' + error['error']['Producto'] + '</div>';
+        } else {
+          document.getElementById("producto").innerHTML = '<div class="msjError" style="margin-top:50%; padding: 16px; text-align: center; font-size: 18px; color: #263238;"> No hay conexión con el servidor </div>';
+        }
+      }
+    );
+  }
 }

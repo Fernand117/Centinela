@@ -32,7 +32,7 @@ class ClienteMongoController extends Controller
         }
 
         if($respuesta != null){
-            return response()->json(['Mensaje' => 'Error, el usuario ya existe']);
+            return response()->json(['Mensaje' => 'Error, el usuario ya existe'], 404);
         } else {
             $coleccion->insertOne($cliente);
             $consultarCliente = $coleccion->find();
@@ -40,7 +40,7 @@ class ClienteMongoController extends Controller
             foreach ($consultarCliente as $items) {
                 array_push($respuesta, $items);
             }
-            return response()->json(['Mensaje' => $respuesta]);
+            return response()->json(['Mensaje' => 'Cuenta creada correctamente.']);
         }
     }
 

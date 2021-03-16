@@ -39,6 +39,8 @@ export class TiendaPage implements OnInit {
       }, error => {
         if (error['status'] == 404) {
           document.getElementById("items").innerHTML = '<div class="msjError" style="margin-top:50%; padding: 16px; text-align: center; font-size: 18px; color: #263238;">' + error['error']['Categorias'] + '</div>';
+        } else {
+          document.getElementById("items").innerHTML = '<div class="msjError" style="margin-top:50%; padding: 16px; text-align: center; font-size: 18px; color: #263238;"> No hay conexión con el servidor </div>';
         }
       }
     );

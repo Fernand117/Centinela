@@ -1,39 +1,88 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>Añadir usuario</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Crear nueva cuenta</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
     <div class="contenedor">
-        <ion-label>Registra un nuevo usuario</ion-label>
-        <br>
-        <br>
-        <ion-item>
-            <ion-label position="floating">Nombre</ion-label>
-            <ion-icon name="person" slot="start"></ion-icon>
-            <ion-input type="text" name="nombre" id="nombre"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label position="floating">Apellido paterno</ion-label>
-            <ion-icon name="person" slot="start"></ion-icon>
-            <ion-input type="text" name="nombre" id="nombre"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label position="floating">Apellido materno</ion-label>
-            <ion-icon name="person" slot="start"></ion-icon>
-            <ion-input type="text" name="nombre" id="nombre"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label position="floating">Correo</ion-label>
-            <ion-icon name="mail" slot="start"></ion-icon>
-            <ion-input type="email" name="nombre" id="nombre"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label position="floating">Password</ion-label>
-            <ion-icon name="lock-closed" slot="start"></ion-icon>
-            <ion-input type="text" name="nombre" id="nombre"></ion-input>
-        </ion-item>
-        <ion-button expand="block">Registrar usuario</ion-button>
+        <ion-card>
+            <ion-item>
+                <ion-label>Datos básicos</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-icon name="person" slot="start"></ion-icon>
+                <ion-input type="text" name="nombre" id="nombre" [(ngModel)]="usuarios.nombre"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Apellido paterno</ion-label>
+                <ion-icon name="person" slot="start"></ion-icon>
+                <ion-input type="text" name="paterno" id="paterno" [(ngModel)]="usuarios.paterno"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Apellido materno</ion-label>
+                <ion-icon name="person" slot="start"></ion-icon>
+                <ion-input type="text" name="materno" id="materno" [(ngModel)]="usuarios.materno"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Edad</ion-label>
+                <ion-icon name="person" slot="start"></ion-icon>
+                <ion-input type="text" name="edad" id="edad" [(ngModel)]="usuarios.edad"></ion-input>
+            </ion-item>
+        </ion-card>
+        <ion-card>
+            <ion-item>
+                <ion-label>
+                    Dirección
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Calle</ion-label>
+                <ion-icon name="lock-closed" slot="start"></ion-icon>
+                <ion-input type="text" name="calle" id="calle" [(ngModel)]="usuarios.calle"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Colonia</ion-label>
+                <ion-icon name="lock-closed" slot="start"></ion-icon>
+                <ion-input type="text" name="colonia" id="colonia" [(ngModel)]="usuarios.colonia"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Ciudad</ion-label>
+                <ion-icon name="lock-closed" slot="start"></ion-icon>
+                <ion-input type="text" name="ciudad" id="ciudad" [(ngModel)]="usuarios.ciudad"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Estado</ion-label>
+                <ion-icon name="lock-closed" slot="start"></ion-icon>
+                <ion-input type="text" name="estado" id="estado" [(ngModel)]="usuarios.estado"></ion-input>
+            </ion-item>
+        </ion-card>
+        <ion-card>
+            <ion-item>
+                <ion-label>
+                    Usuario y contraseña
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Usuario</ion-label>
+                <ion-icon name="person" slot="start"></ion-icon>
+                <ion-input type="text" name="user" id="user" [(ngModel)]="usuarios.usuario"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Email</ion-label>
+                <ion-icon name="mail" slot="start"></ion-icon>
+                <ion-input type="text" name="email" id="email" [(ngModel)]="usuarios.email"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Contraseña</ion-label>
+                <ion-icon name="lock-closed" slot="start"></ion-icon>
+                <ion-input type="password" name="password" id="password" [(ngModel)]="usuarios.password"></ion-input>
+            </ion-item>
+        </ion-card>
+        <ion-button expand="block" (click)="validarFormulario()">Registrar usuario</ion-button>
     </div>
 </ion-content>

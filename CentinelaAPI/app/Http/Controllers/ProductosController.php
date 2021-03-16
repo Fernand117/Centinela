@@ -24,6 +24,22 @@ class ProductosController extends Controller
         }
     }
 
+    public function listaProductoDetalle(Request $request){
+        $datos = $request->all();
+        $idProducto = $datos['idProductos'];
+        $consultaProducto = productos::find($idProducto);
+        $items = json_decode(json_encode($consultaProducto), true);
+
+        if ($consultaProducto != null) {
+            for($i = 0; $i < count($consultaProducto); $i++){
+                $items[$i]['imagen'] = 'http://'.$_SERVER['SERVER_NAME'].'/centinelaApi/img/productos/'.$items[$i]['imagen'];
+            }
+            return response()->json(['Producto' => $items]);
+        } else {
+            return response()->json(['Producto' => 'Este producto no existe.'], 404);
+        }
+    }
+
     public function listarProductos(){
         $consultarProductos = DB::select('select * from productos');
         $items = json_decode(json_encode($consultarProductos), true);

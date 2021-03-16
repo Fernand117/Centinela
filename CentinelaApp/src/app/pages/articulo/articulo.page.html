@@ -1,11 +1,22 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>articulo</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Productos</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
-  <div class="items"></div>
-
+    <div class="items" id="productos" name="productos">
+        <div class="producto" *ngFor="let item of productosLista" [routerLink]="['/articulo-detalle', item.id]">
+            <ion-item>
+                <img src="" alt="">
+                <ion-label>
+                    <p>Pizza</p>
+                    <h2>Hawaii</h2>
+                </ion-label>
+            </ion-item>
+        </div>
+    </div>
 </ion-content>
