@@ -25,16 +25,15 @@ class PedidosController extends Controller
         if ($pedidosConsulta != null) {
             return response()->json(['Pedidos' => $pedidosConsulta]);
         } else {
-            return response()->json(['Pedidos' => 'Aún no tienes pedidos realizados.']);
+            return response()->json(['Pedidos' => 'Aún no tienes pedidos realizados.'], 404);
         }
     }
 
     public function registrarPedido(Request $request){
         $datos = $request->all();
-        $consultaPedidos = DB::select('select numero_pedido from pedidos grup by numero_pedido ASC limit 1');
+        $consultaPedidos = DB::select('select numero_pedido from pedidos group by numero_pedido order by numero_pedido desc limit 1');
         if($consultaPedidos != null){
-            $npedido = intval($consultaPedidos) + 1;
-            
+            $npedido = intval($consultaPedidos['0']->numero_pedido) + 1;
         } else {
             $npedido = 1;    
         }
@@ -46,5 +45,18 @@ class PedidosController extends Controller
         $pedido->total = $datos['total'];
         $pedido->save();
         return response()->json(['Mensaje' => 'Pedido levantado']);
+        //return response()->json();
+    }
+
+    public function eliminarPedido(Request $request){
+        $datos = $request->all();
+        $nPedido = $datos['numero_pedido'];
+        DB::delete('delete from pedidos where numero_pedido = ?', [$nPedido]);
+        $consultaPedidos = DB::select('select * from pedidos where numero_pedido = ?', [$nPedido]);
+        if($consultaPedidos != null){
+            return response()->json(['Mensaje' => 'El pedido no se ha eliminado correctamente.'], 404);
+        } else {
+            return response()->json(['Mensaje' => 'El pedido se ha eliminado correctamente.']);
+        }        
     }
 }

@@ -17,5 +17,10 @@
         "icon": "storefront",
         "name": "Tienda",
         "redirecTo": "/tienda"
+    },
+    {
+        "icon": "list",
+        "name": "Mis pedidos",
+        "redirecTo": "/carrito"
     }
 ]

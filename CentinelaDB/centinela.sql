@@ -1,3 +1,5 @@
+create database centinelaDB;
+
 use centinelaDB;
 
 create table usuarios(
@@ -71,4 +73,6 @@ create table detalles_pedidos(
     foreign key (idProducto) references productos(id)
 );
 
-select * from usuarios;
+select * from pedidos;
+delete from pedidos where cliente = 'Luis Fernando';
+select numero_pedido from pedidos group by numero_pedido order by numero_pedido desc limit 1;

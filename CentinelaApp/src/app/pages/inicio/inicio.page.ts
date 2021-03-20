@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioModule } from '../../models/usuario/usuario.module';
 import { Router } from '@angular/router';
 import { ServiceService } from '../../services/service.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-inicio',
@@ -19,7 +20,8 @@ export class InicioPage implements OnInit {
 
   constructor(
     private router: Router,
-    private apiService: ServiceService
+    private apiService: ServiceService,
+    private loadController: LoadingController
   ) { }
 
   ngOnInit() {
@@ -45,16 +47,26 @@ export class InicioPage implements OnInit {
     localStorage.removeItem('statusCheckBox');
   }
 
-  cargarDatosGeneralSensores(){
+  async cargarDatosGeneralSensores(){
+    const load = await this.loadController.create({
+      cssClass: "my-custom-class",
+      message: "Cargando datos de los sensores.",
+      duration: 2000
+    });
+    await load.present();
+
     this.apiService.listaGeneralSensores().subscribe(
       respuesta => {
         this.datosSensores = respuesta['Datos'];
+        load.onDidDismiss();
       }, error => {
         if (error['status'] == 404){
           this.msjErrorGDatos = error['error']['Datos'];
           document.getElementById("cards").innerHTML = '<div class="msjError" style="margin-top:50%; padding: 16px; text-align: center; font-size: 18px; color: #263238;">' + this.msjErrorGDatos + '</div>';
+          load.onDidDismiss();
         } else {
           document.getElementById("cards").innerHTML = '<div class="msjError" style="margin-top:50%; padding: 16px; text-align: center; font-size: 18px; color: #263238;"> No hay conexión con el servidor </div>';
+          load.onDidDismiss();
         }
       }
     );

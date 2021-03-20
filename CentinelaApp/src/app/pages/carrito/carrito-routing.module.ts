@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: CarritoPage
+  },
+  {
+    path: 'add-pedido',
+    loadChildren: () => import('./add-pedido/add-pedido.module').then( m => m.AddPedidoPageModule)
   }
 ];
 

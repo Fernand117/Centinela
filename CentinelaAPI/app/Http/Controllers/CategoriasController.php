@@ -17,7 +17,7 @@ class CategoriasController extends Controller
             }
             return response()->json(['Categorias' => $items]);
         } else {
-            return response()->json(['Categorias' => 'No existen categorias.'], 404);
+            return response()->json(['Categorias' => 'Aún no hay categorías registradas.'], 404);
         }
     }
 

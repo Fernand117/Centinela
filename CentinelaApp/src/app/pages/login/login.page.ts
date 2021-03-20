@@ -3,7 +3,6 @@ import { Router} from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { UsuarioModule } from '../../models/usuario/usuario.module';
 import { ServiceService } from '../../services/service.service';
-import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
 @Component({
   selector: 'app-login',
@@ -11,20 +10,18 @@ import { GooglePlus } from '@ionic-native/google-plus/ngx';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
   usuarios: UsuarioModule = new UsuarioModule();
   formData: FormData = new FormData();
   status: string;
 
-  constructor(
+  constructor(    
     private alertController: AlertController,
     private loadingController: LoadingController,
     private apiservice: ServiceService,
-    private googlePlus: GooglePlus,
     private router: Router
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     status = localStorage.getItem('statusCheckBox');
     if (status == "true"){
       this.router.navigateByUrl("inicio");
@@ -45,16 +42,6 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
-  loginGoogle(){
-    this.googlePlus.login({})
-    .then(res => {
-      console.log(res);
-    })
-    .catch(err => {
-      console.log(err);
-    });
-  }
-
   async loadLogin(){
     const load = await this.loadingController.create({
       cssClass: "my-custom-class",
@@ -71,7 +58,9 @@ export class LoginPage implements OnInit {
         this.guardarDatos(respuesta['Datos']);
       }, err => {
         if (err['status'] == 404){
-          this.alertMsg(err['error']['Datos'], err['status']);
+          this.alertMsg(err['status'], err['error']['Datos']);
+        } else {
+          this.alertMsg('Error', 'El servidor no está disponible');
         }
       }
     );

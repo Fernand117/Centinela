@@ -53,7 +53,7 @@ Route::post('eliminar/producto', 'ProductosController@eliminarProducto');
 Route::get('lista/pedidos', 'PedidosController@listarPedidosGeneral');
 Route::post('lista/pedidos/cliente', 'PedidosController@listarPedidoCliente');
 Route::post('registrar/pedido', 'PedidosController@registrarPedido');
-
+Route::post('eliminar/pedido', 'PedidosController@eliminarPedido');
 Route::post('lista/detalles', 'DetallesPedidosController@listarDetallePedido');
 Route::post('registrar/detalle', 'DetallesPedidosController@registrarDetallePedido');
 Route::post('eliminar/detalle', 'DetallesPedidosController@eliminarDetalleProducto');
