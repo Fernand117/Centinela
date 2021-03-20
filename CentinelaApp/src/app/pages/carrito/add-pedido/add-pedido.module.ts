@@ -8,6 +8,7 @@ import { AddPedidoPageRoutingModule } from './add-pedido-routing.module';
 
 import { AddPedidoPage } from './add-pedido.page';
 
+
 @NgModule({
   imports: [
     CommonModule,

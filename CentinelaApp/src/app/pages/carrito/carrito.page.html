@@ -9,7 +9,7 @@
 
 <ion-content>
     <div class="msjError" name="cardPedidos" id="cardPedidos"></div>
-    <ion-card id="cardItemPedidos" *ngFor="let item of datosPedidos">
+    <ion-card id="cardItemPedidos" *ngFor="let item of datosPedidos" [routerLink]="['/add-pedido', item.id]">
         <ion-item>
             <ion-label>Número de pedido: CA00{{item.numero_pedido}}</ion-label>
             <ion-button slot="end" (click)="eliminarPedido(item.numero_pedido)">

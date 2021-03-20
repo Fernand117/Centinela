@@ -6,6 +6,8 @@ use App\models\tipo_empleados;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use GuzzleHttp\Client;
+
 class TipoEmpleadosController extends Controller
 {
     public function listarTipoEmpleados(){

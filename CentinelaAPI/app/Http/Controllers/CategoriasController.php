@@ -13,7 +13,7 @@ class CategoriasController extends Controller
         $items = json_decode(json_encode($listaCategorias), true);
         if($listaCategorias != null){
             for ($i=0; $i < count($listaCategorias); $i++) { 
-                $items[$i]['imagen'] = 'http://'.$_SERVER['SERVER_NAME'].'/centinelaApi/img/categorias/'.$items[$i]['imagen'];
+                $items[$i]['imagen'] = 'http://'.$_SERVER['SERVER_NAME'].'/centinelaAPI/img/categorias/'.$items[$i]['imagen'];
             }
             return response()->json(['Categorias' => $items]);
         } else {

@@ -15,23 +15,22 @@
 
 <ion-content>
     <form>
-        <div class="contenedor" id="producto">
-            <img src="../../../assets/img/mov.jpg" alt="" class="imgProducto">
-
+        <div class="contenedor" id="producto" *ngFor="let item of producto">
+            <img src="{{item.imagen}}" alt="" class="imgProducto">
             <ion-card>
                 <ion-item>
-                    <ion-label>Sensor de proximidad SHA</ion-label>
+                    <ion-label>{{item.nombre}} </ion-label>
                 </ion-item>
                 <ion-card-content>
                     <p>
-                        <ion-label>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, odit voluptatem nostrum molestiae autem sit enim quam pariatur minima soluta saepe ipsa omnis provident repellat a eligendi porro veniam doloremque.</ion-label>
+                        <ion-label> {{item.descripcion}} </ion-label>
                     </p>
                 </ion-card-content>
                 <ion-item>
-                    <ion-label slot="start">$80.00 MXN</ion-label>
+                    <ion-label slot="start">$ {{item.precio}} MXN</ion-label>
                     <ion-label>Cant:</ion-label>
                     <ion-input type="number" [(ngModel)]="contador" [ngModelOptions]="{standalone: true}"></ion-input>
-                    <ion-button type="submit" expand="block" (click)="addToCart()" slot="end">Añadir
+                    <ion-button type="submit" expand="block" (click)="addToCart(item)" slot="end">Añadir
                         <ion-icon name="add-circle"></ion-icon>
                     </ion-button>
                 </ion-item>

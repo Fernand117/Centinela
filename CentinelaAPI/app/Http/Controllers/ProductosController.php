@@ -16,7 +16,7 @@ class ProductosController extends Controller
         $items = json_decode(json_encode($consultarProductos), true);
         if($consultarProductos != null){
             for($i = 0; $i < count($consultarProductos); $i++){
-                $items[$i]['imagen'] = 'http://'.$_SERVER['SERVER_NAME'].'/centinelaApi/img/productos/'.$items[$i]['imagen'];
+                $items[$i]['imagen'] = 'http://'.$_SERVER['SERVER_NAME'].'/centinelaAPI/img/productos/'.$items[$i]['imagen'];
             }
             return response()->json(['Productos' => $items]);
         } else {
@@ -27,12 +27,12 @@ class ProductosController extends Controller
     public function listaProductoDetalle(Request $request){
         $datos = $request->all();
         $idProducto = $datos['idProductos'];
-        $consultaProducto = productos::find($idProducto);
+        $consultaProducto = DB::select('select * from productos where id = ?', [$idProducto]);
         $items = json_decode(json_encode($consultaProducto), true);
 
         if ($consultaProducto != null) {
             for($i = 0; $i < count($consultaProducto); $i++){
-                $items[$i]['imagen'] = 'http://'.$_SERVER['SERVER_NAME'].'/centinelaApi/img/productos/'.$items[$i]['imagen'];
+                $items[$i]['imagen'] = 'http://'.$_SERVER['SERVER_NAME'].'/centinelaAPI/img/productos/'.$items[$i]['imagen'];
             }
             return response()->json(['Producto' => $items]);
         } else {
@@ -45,7 +45,7 @@ class ProductosController extends Controller
         $items = json_decode(json_encode($consultarProductos), true);
         if($consultarProductos != null){
             for($i = 0; $i < count($consultarProductos); $i++){
-                $items[$i]['imagen'] = 'http://'.$_SERVER['SERVER_NAME'].'/centinelaApi/img/productos/'.$items[$i]['imagen'];
+                $items[$i]['imagen'] = 'http://'.$_SERVER['SERVER_NAME'].'/centinelaAPI/img/productos/'.$items[$i]['imagen'];
             }
             return response()->json(['Productos' => $items]);
         } else {

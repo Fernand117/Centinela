@@ -40,7 +40,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/carrito/carrito.module').then( m => m.CarritoPageModule)
   },
   {
-    path: 'add-pedido',
+    path: 'add-pedido/:id',
     loadChildren: () => import('./pages/carrito/add-pedido/add-pedido.module').then( m => m.AddPedidoPageModule)
   },
   {

@@ -18,6 +18,7 @@ export class ArticuloDetallePage implements OnInit {
   car: any;
   contador = 0;
   cont = 0;
+  cliente: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,14 +31,24 @@ export class ArticuloDetallePage implements OnInit {
 
   ngOnInit() {
     this.cargarBadge();
+    this.cargarProductoDetalle();
   }
 
-  addToCart(){
-    if (Number(this.contador) == 0) {
-      this.alertMsg("Ocurrió un error","Ingrese por favor una cantidad mayor a 0.");
-    } else {
-      this.cargarBadge();
-    }
+  addToCart(items){
+    this.cliente = JSON.parse(localStorage.getItem('Usuario'));
+    console.log(this.cliente[0]['nombre']);
+    this.cont = this.contador * items.precio;
+    console.log(this.cont);
+    this.formData.append('cliente', this.cliente[0]['nombre']);
+    this.formData.append('idProducto', items.id);
+    this.formData.append('cantidad', this.contador.toString());
+    this.formData.append('subtotal', this.cont.toString());
+    this.apiService.añadirDetallePedido(this.formData).subscribe(
+      respuesta => {
+        console.log(respuesta['Mensaje']);
+        this.alertMsg('Advertencia', respuesta['Mensaje']);
+      }
+    );
   }
 
   async alertMsg(sheader, mensaje){
@@ -59,7 +70,7 @@ export class ArticuloDetallePage implements OnInit {
   }
 
   cargarProductoDetalle(){
-    this.formData.append('idProducto', this.id);
+    this.formData.append('idProductos', this.id);
     this.apiService.listaProductoDetalle(this.formData).subscribe(
       respuesta => {
         this.producto = respuesta['Producto'];

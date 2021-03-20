@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ServiceService {
 
-  private url = 'http://192.168.1.69/centinelaAPI/api';
+  private url = 'http://192.168.1.69/centinelaApi/api';
   //private url = 'http://127.0.0.1:8000/api';
 
   constructor(
@@ -47,6 +47,14 @@ export class ServiceService {
 
   crearPedido(datos: any){
     return this.http.post(`${this.url}/registrar/pedido`, datos);
+  }
+
+  añadirDetallePedido(datos: any){
+    return this.http.post(`${this.url}/registrar/detalle`, datos);
+  }
+
+  detallesPedido(datos: any){
+    return this.http.post(`${this.url}/lista/detalles`, datos);
   }
 
   eliminarPedido(datos: any){

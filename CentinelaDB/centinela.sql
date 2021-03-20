@@ -63,6 +63,8 @@ create table pedidos(
     total float
 );
 
+select  * from pedidos;
+
 create table detalles_pedidos(
     id int primary key auto_increment,
     idPedido int,
@@ -74,5 +76,3 @@ create table detalles_pedidos(
 );
 
 select * from pedidos;
-delete from pedidos where cliente = 'Luis Fernando';
-select numero_pedido from pedidos group by numero_pedido order by numero_pedido desc limit 1;

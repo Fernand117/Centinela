@@ -11,10 +11,10 @@
     <div class="items" id="productos" name="productos">
         <div class="producto" *ngFor="let item of productosLista" [routerLink]="['/articulo-detalle', item.id]">
             <ion-item>
-                <img src="" alt="">
+                <img src="{{item.imagen}} " alt="">
                 <ion-label>
-                    <p>Pizza</p>
-                    <h2>Hawaii</h2>
+                    <p> {{item.nombre}} </p>
+                    <h2>Precio: $ {{item.precio}} MXN</h2>
                 </ion-label>
             </ion-item>
         </div>
