@@ -10,7 +10,6 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage implements OnInit {
-
   msjErrorGDatos: any;
   datosSensores: any;
   datos: any;
@@ -51,7 +50,7 @@ export class InicioPage implements OnInit {
     const load = await this.loadController.create({
       cssClass: "my-custom-class",
       message: "Cargando datos de los sensores.",
-      duration: 2000
+      duration: 200
     });
     await load.present();
 
@@ -62,10 +61,10 @@ export class InicioPage implements OnInit {
       }, error => {
         if (error['status'] == 404){
           this.msjErrorGDatos = error['error']['Datos'];
-          document.getElementById("cards").innerHTML = '<div class="msjError" style="margin-top:50%; padding: 16px; text-align: center; font-size: 18px; color: #263238;">' + this.msjErrorGDatos + '</div>';
+          document.getElementById("cards").innerHTML = '<div class="msjError" style="margin-top:30%; padding: 16px; text-align: center; font-size: 18px; color: #263238;">' + this.msjErrorGDatos + '</div>';
           load.onDidDismiss();
         } else {
-          document.getElementById("cards").innerHTML = '<div class="msjError" style="margin-top:50%; padding: 16px; text-align: center; font-size: 18px; color: #263238;"> No hay conexión con el servidor </div>';
+          document.getElementById("cards").innerHTML = '<div class="msjError" style="margin-top:30%; padding: 16px; text-align: center; font-size: 18px; color: #263238;"> No hay conexión con el servidor </div>';
           load.onDidDismiss();
         }
       }

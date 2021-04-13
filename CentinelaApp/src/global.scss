@@ -29,7 +29,9 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 body {
-    --ion-toolbar-background: linear-gradient(197deg, rgb(71, 172, 255) 0%, rgb(22, 143, 199) 13.5%, rgb(10, 109, 175) 33.33%, rgb(15, 47, 73) 100%) !important;
-    --ion-tab-bar-background: linear-gradient(197deg, rgb(71, 172, 255) 0%, rgb(22, 143, 199) 13.5%, rgb(10, 109, 175) 33.33%, rgb(15, 47, 73) 100%) !important;
+    /*     --ion-toolbar-background: linear-gradient(197deg, rgb(71, 172, 255) 0%, rgb(22, 143, 199) 13.5%, rgb(10, 109, 175) 33.33%, rgb(15, 47, 73) 100%) !important;
+    --ion-tab-bar-background: linear-gradient(197deg, rgb(71, 172, 255) 0%, rgb(22, 143, 199) 13.5%, rgb(10, 109, 175) 33.33%, rgb(15, 47, 73) 100%) !important; */
+    --ion-toolbar-background: #578df8;
+    --ion-tab-bar-background: #578df8;
     --ion-toolbar-color: white;
 }

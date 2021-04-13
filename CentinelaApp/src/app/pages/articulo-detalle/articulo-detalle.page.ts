@@ -28,7 +28,6 @@ export class ArticuloDetallePage implements OnInit {
   ) {}
 
   id = this.route.snapshot.paramMap.get('id');
-
   ngOnInit() {
     this.cargarBadge();
     this.cargarProductoDetalle();

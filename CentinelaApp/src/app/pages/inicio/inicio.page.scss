@@ -1,48 +1,59 @@
-ion-toolbar {
-    --background: linear-gradient(197deg, rgb(71, 172, 255) 0%, rgb(22, 143, 199) 13.5%, rgb(10, 109, 175) 33.33%, rgb(15, 47, 73) 100%) !important;
-    --color: white;
-}
-
-ion-title {
-    text-align: center;
-}
-
 .contenedor {
     width: 100%;
     height: 100%;
-}
-
-table {
-    width: 100%;
-    text-align: center;
-}
-
-.banner {
-    width: 100%;
-    height: 250px;
-    /*background: linear-gradient(197deg, rgb(71, 172, 255) 0%, rgb(22, 143, 199) 13.5%, rgb(10, 109, 175) 33.33%, rgb(15, 47, 73) 100%) !important;*/
-    background-image: url("../../../assets/img/back_cent.jpg");
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.banText {
-    width: 100%;
-    height: auto;
-    padding: 3%;
-    margin-top: -60%;
-    /*background-color: rebeccapurple;*/
-    margin-bottom: 10%;
-    color: white;
-}
-
-.blankF {
-    width: 100%;
-    height: 20px;
-}
-
-.msjError {
-    margin-top: 10%;
-    color: white;
+    .banner {
+        width: 100%;
+        height: 250px;
+        /*background: linear-gradient(197deg, rgb(71, 172, 255) 0%, rgb(22, 143, 199) 13.5%, rgb(10, 109, 175) 33.33%, rgb(15, 47, 73) 100%) !important;*/
+        background: #4784ff;
+        border-radius: 0px 0px 25px 25px;
+        .shader {
+            width: 100%;
+            height: 100%;
+            background-image: url('../../../assets/icon/conect-svg.svg');
+            background-repeat: repeat;
+            background-size: contain;
+            background-position: center;
+            .nav {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                color: white;
+                padding: 10px;
+                ion-title {
+                    font-size: 26px;
+                    font-weight: bold;
+                    text-align: center;
+                }
+                ion-button {
+                    height: 100%;
+                    width: 100%;
+                }
+                .btn {
+                    width: 50px;
+                    height: 50px;
+                    background-color: #2f73fa;
+                    text-align: center;
+                    border-radius: 25px;
+                }
+            }
+            .banText {
+                width: 100%;
+                padding: 3%;
+                color: white;
+                h3,
+                h1 {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+    table {
+        width: 100%;
+        text-align: center;
+    }
+    .blankF {
+        width: 100%;
+        height: 20px;
+    }
 }

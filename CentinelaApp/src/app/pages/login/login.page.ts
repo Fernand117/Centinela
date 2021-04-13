@@ -10,11 +10,12 @@ import { ServiceService } from '../../services/service.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+
   usuarios: UsuarioModule = new UsuarioModule();
   formData: FormData = new FormData();
   status: string;
 
-  constructor(    
+  constructor(
     private alertController: AlertController,
     private loadingController: LoadingController,
     private apiservice: ServiceService,
@@ -23,8 +24,8 @@ export class LoginPage implements OnInit {
 
   async ngOnInit() {
     status = localStorage.getItem('statusCheckBox');
-    if (status == "true"){
-      this.router.navigateByUrl("inicio");
+    if (status === 'true'){
+      this.router.navigateByUrl('inicio');
     }
   }
 
@@ -44,8 +45,8 @@ export class LoginPage implements OnInit {
 
   async loadLogin(){
     const load = await this.loadingController.create({
-      cssClass: "my-custom-class",
-      message: "Iniciando sesión",
+      cssClass: 'my-custom-class',
+      message: 'Iniciando sesión',
       duration: 2000
     });
     await load.present();
@@ -57,10 +58,10 @@ export class LoginPage implements OnInit {
       respuesta => {
         this.guardarDatos(respuesta['Datos']);
       }, err => {
-        if (err['status'] == 404){
+        if (err['status'] === 404){
           this.alertMsg(err['status'], err['error']['Datos']);
         } else {
-          this.alertMsg('Error', 'El servidor no está disponible');
+          this.alertMsg('Error', 'Ocurrió un eror en el servidor, servicio no disponible.');
         }
       }
     );
@@ -69,8 +70,8 @@ export class LoginPage implements OnInit {
   }
 
   validarFormulario(form){
-    if (this.usuarios.usuario == "" || this.usuarios.password == "") {
-      this.alertMsg("Ocurrió un error", "Por favor, rellene todos los campos solicitados.");
+    if (this.usuarios.usuario === '' || this.usuarios.password === '') {
+      this.alertMsg('Ocurrió un error', 'Por favor, rellene todos los campos solicitados.');
     } else {
       this.loadLogin();
     }
@@ -79,6 +80,6 @@ export class LoginPage implements OnInit {
   guardarDatos(datos){
     localStorage.setItem('statusCheckBox', String(this.usuarios.statusChekBox));
     localStorage.setItem('Usuario', JSON.stringify(datos));
-    this.router.navigateByUrl("inicio");
+    this.router.navigateByUrl('inicio');
   }
 }

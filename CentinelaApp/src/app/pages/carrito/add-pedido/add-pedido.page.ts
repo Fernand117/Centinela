@@ -56,14 +56,14 @@ export class AddPedidoPage implements OnInit {
         let payment = new PayPalPayment('3.33', 'MXN', 'Description', 'sale');
         this.payPal.renderSinglePaymentUI(payment).then(() => {
           console.log(payment);
-        }, () => {
-          // Error or render dialog closed without being successful
+        }, (error) => {
+          console.log(error);
         });
-      }, () => {
-        // Error in configuration
+      }, (erroConfig) => {
+        console.log(erroConfig);
       });
-    }, () => {
-      // Error in initialization, maybe PayPal isn't supported or something else
+    }, (errorSupport) => {
+      console.log(errorSupport);
     });
   }
 }
