@@ -10,7 +10,7 @@ android {
 apply from: "../capacitor-cordova-android-plugins/cordova.variables.gradle"
 dependencies {
 
-    implementation "com.facebook.android:facebook-android-sdk:9.0.0"
+
 }
 apply from: "../../node_modules/card.io.cordova.mobilesdk/src/android/build.gradle"
 apply from: "../../node_modules/com.paypal.cordova.mobilesdk/src/android/build.gradle"

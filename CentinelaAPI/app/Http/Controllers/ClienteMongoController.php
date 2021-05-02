@@ -62,4 +62,15 @@ class ClienteMongoController extends Controller
             return response()->json(['Datos' => 'Usuario o contraseña incorrectos.'], 404);
         }
     }
+
+    public function listaClientes(){
+	    $conexion = new MongoDBClient();
+	    $db = $conexion->dbcentinela;
+	    $consulta = $db->clientes->find();
+	    $respuesta = Array();
+	    foreach($consulta as $item){
+		    array_push($respuesta, $item);
+	    }
+	    return response()->json(['Clientes' => $respuesta]);
+    }
 }
