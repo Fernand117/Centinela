@@ -29,7 +29,7 @@ public class serviceAPI {
     private DataOutputStream dataOutputStream;
     private InputStream inputStream;
     private BufferedReader bufferedReader;
-    private String urlBase = "http://192.168.1.69/centinelaApi/api";
+    private String urlBase = "http://192.168.1.71/centinelaApi/api";
 
     //MÉTODO PARA INICIAR SESIÓN
     public HttpURLConnection login(HashMap<String, String> parametros){

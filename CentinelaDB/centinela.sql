@@ -1,5 +1,3 @@
-create database centinelaDB;
-
 use centinelaDB;
 
 create table usuarios(

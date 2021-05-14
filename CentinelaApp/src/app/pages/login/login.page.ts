@@ -14,17 +14,22 @@ export class LoginPage implements OnInit {
   formData: FormData = new FormData();
   status: string;
 
-  constructor(
+  constructor(    
     private alertController: AlertController,
     private loadingController: LoadingController,
     private apiservice: ServiceService,
     private router: Router
   ) { }
+	
+	const servidor = () => {
+									
+			  console.log("Bienvenido");
+	}
 
   async ngOnInit() {
-    status = localStorage.getItem('statusCheckBox');
+	 status = localStorage.getItem('statusCheckBox');
     if (status == "true"){
-      this.router.navigateByUrl("inicio");
+		  this.router.navigateByUrl("inicio");
     }
   }
 
@@ -57,7 +62,6 @@ export class LoginPage implements OnInit {
       respuesta => {
         this.guardarDatos(respuesta['Datos']);
       }, err => {
-        console.log(err);
         if (err['status'] == 404){
           this.alertMsg(err['status'], err['error']['Datos']);
         } else {

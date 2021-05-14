@@ -138,7 +138,6 @@ public class LoginActivity extends AppCompatActivity {
                 } catch (IOException e){
                     e.printStackTrace();
                 }
-
                 return jsonObject;
             } catch (Exception e){
                 e.printStackTrace();
